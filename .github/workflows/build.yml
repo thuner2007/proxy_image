@@ -62,4 +62,4 @@ jobs:
           package-name: cwx-proxy # Name of the package to delete older versions from
           package-type: container
           min-versions-to-keep: 10
-          delete-only-pre-release-versions: "true"
+          delete-only-pre-release-versions: "true" # Optional. Default is false
