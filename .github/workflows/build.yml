@@ -59,7 +59,7 @@ jobs:
       - name: cleanup older images
         uses: actions/delete-package-versions@v5
         with:
-          package-name: cwx-proxy
+          package-name: cwx-proxy # Name of the package to delete older versions from
           package-type: container
           min-versions-to-keep: 10
           delete-only-pre-release-versions: "false"
