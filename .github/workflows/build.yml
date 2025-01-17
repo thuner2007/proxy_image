@@ -20,6 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Debug Vars
+        run: |
+          echo "Registry: ${{ vars.DOCKER_REGISTRY }}"
+          echo "Namespace: ${{ vars.DOCKER_NAMESPACE }}"
+          echo "Image Name: ${{ vars.DOCKER_IMAGE_NAME }}"
+
       - name: login to docker
         uses: docker/login-action@v3
         with:
@@ -40,7 +46,7 @@ jobs:
       - name: build and push docker image
         uses: docker/build-push-action@v6
         with:
-          context: ./
+          context: ./  # Ensure this is correct
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: ${{ steps.meta.outputs.tags }}
@@ -57,4 +63,3 @@ jobs:
           package-type: container
           min-versions-to-keep: 10
           delete-only-pre-release-versions: "false"
-  
